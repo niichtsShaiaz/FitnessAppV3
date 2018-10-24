@@ -12,38 +12,68 @@ class WorkingoutScreen extends React.Component {
     this.state =
       {
         workout: this.props.navigation.state.params.workout,
-        currentExercise: {},
         currentID: 0,
+        buttonTitle: "Next!",
+        isFinished: false
       }
 
   }
+  /*
   componentWillMount() {
-    this.setState({ currentExercise: this.state.workout.exercises[currentID] })
-  }
-
-  Next() {
-
-    this.setState({ currentExercise: this.state.workout.exercises[this.state.currentID++] })
+    this.setState({ currentExercise: this.state.workout.exercises[0] })
   }
 
 
+
+  <Text style={styles.title}>{this.state.currentExercise.name}</Text>
+  
+  */
+  checkExercise() {
+    if (this.state.currentID = this.state.workout.exercises.length() - 1) {
+
+      this.setState((state) => {
+        // Important: read `state` instead of `this.state` when updating.
+        return { buttonTitle: "Finished!" }
+      });
+    }
+    else
+      return "Next!"
+
+  }
+
+  nextExercise() {
+    if (this.state.currentID == this.state.workout.exercises.length-1) {
+      this.setState((state) => {
+        return { isFinished: true }
+      });
+    }
+    else {
+      this.setState((state) => {
+        return { currentID: state.currentID + 1 }
+      });
+    }
+  }
   render() {
     return (
       <View>
         <ScrollView>
-          {console.log(this.state.currentExercise)}
-          <Text style={styles.title}>{this.state.currentExercise.z}</Text>
-          <Image style={styles.fileImage} source={{ uri: this.state.currentExercise.image }} />
+          <Text style={styles.title}>{this.state.workout.exercises[this.state.currentID].name}</Text>
+          <Image style={styles.fileImage} source={{ uri: this.state.workout.exercises[this.state.currentID].image }} />
+          <Text style={styles.headerText}>{this.state.workout.exercises[this.state.currentID].description}</Text>
 
-          <Button
-            title="Next"
-            height="40"
-            onPress={this.Next()}
-          />
-          <Button
-            title="Go to home"
-            onPress={() => this.props.navigation.navigate('Home')}
-          />
+          {this.state.isFinished ? (
+            <Button
+              title="Finish!"
+              onPress={() => this.props.navigation.navigate('Home')}
+            />
+
+          ) : (
+              <Button
+                title="Next!"
+                height="70"
+                onPress={() => { this.nextExercise() }}
+              />
+            )}
         </ScrollView>
 
       </View>
@@ -74,8 +104,9 @@ const styles = StyleSheet.create({
   content: {
   },
   fileImage: {
-    width: 500,
-    height: 500
+    width: 200,
+    height: 200,
+    alignItems: "center",
   }
 });
 export default WorkingoutScreen;
