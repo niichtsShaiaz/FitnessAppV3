@@ -9,15 +9,33 @@ import WorkoutScreen from './screens/WorkoutScreen';
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Workout: WorkoutScreen,
-    Exercise: ExerciseScreen,
+    Workout: props => <WorkoutScreen {...props}/>,
+    Exercise: props => <ExerciseScreen {...props}/>,
   },
   {
     initialRouteName: 'Home',
   }
 );
 
+
+
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.setWorkout = this.setWorkout.bind(this);
+
+    this.state = {
+      workoutId: null
+    };
+  }
+
+  setWorkout(workoutId) {
+    this.setState({
+      workoutId
+    })
+  }
+
   render() {
     return <RootStack />;
   }
