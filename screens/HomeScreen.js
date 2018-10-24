@@ -25,8 +25,8 @@ class HomeScreen extends React.Component {
     return (
       <View>
         <ScrollView>
-          {this.state.catagorys.map(c => (
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Workout', {catagory: c})}>
+          {this.state.catagorys.map((c,i) => (
+            <TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Workout', {catagory: c})}>
               <View style={styles.listItem}>
                 <Text style={styles.name}>{c.catagory}</Text>
               </View>
