@@ -57,6 +57,7 @@ class WorkingoutScreen extends React.Component {
     return (
       <View>
         <ScrollView>
+          <Text style={styles.title}>{this.state.currentID+1} / {this.state.workout.exercises.length}</Text>
           <Text style={styles.title}>{this.state.workout.exercises[this.state.currentID].name}</Text>
           <Image style={styles.fileImage} source={{ uri: this.state.workout.exercises[this.state.currentID].image }} />
           <Text style={styles.headerText}>{this.state.workout.exercises[this.state.currentID].description}</Text>
