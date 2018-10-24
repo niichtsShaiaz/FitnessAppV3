@@ -4,6 +4,9 @@ import Accordion from 'react-native-collapsible/Accordion';
 import { Constants } from 'expo';
 
 class ExerciseScreen extends React.Component {
+  static navigationOptions = {
+    headerTitle: "Exercise Screen",
+  };
   constructor(props) {
     super(props);
     this.state =
@@ -17,7 +20,7 @@ class ExerciseScreen extends React.Component {
   _renderSectionTitle = section => {
     return (
       <View style={styles.content}>
-        <Text>{section.content}</Text>
+        <Text>{section.content} </Text>
       </View>
     );
   };
@@ -59,7 +62,7 @@ class ExerciseScreen extends React.Component {
           />
           <Button
             title="Start"
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() => this.props.navigation.navigate('Workingout', {workout: this.state.workout})}
           />
         </ScrollView>
 

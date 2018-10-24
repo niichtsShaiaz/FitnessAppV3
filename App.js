@@ -4,6 +4,8 @@ import { createStackNavigator } from 'react-navigation'; // Version can be speci
 import HomeScreen from './screens/HomeScreen';
 import ExerciseScreen from './screens/ExerciseScreen';
 import WorkoutScreen from './screens/WorkoutScreen';
+import WorkingoutScreen from './screens/WorkingoutScreen';
+import screentest from './screens/WorkingoutScreen';
 
 
 const RootStack = createStackNavigator(
@@ -11,6 +13,7 @@ const RootStack = createStackNavigator(
     Home: HomeScreen,
     Workout: props => <WorkoutScreen {...props}/>,
     Exercise: props => <ExerciseScreen {...props}/>,
+    Workingout: props => <WorkingoutScreen {...props}/>,
   },
   {
     initialRouteName: 'Home',
