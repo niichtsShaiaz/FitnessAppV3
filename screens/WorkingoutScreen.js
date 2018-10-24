@@ -12,12 +12,14 @@ class WorkingoutScreen extends React.Component {
     this.state =
       {
         workout: this.props.navigation.state.params.workout,
-        currentExercise: this.props.navigation.state.params.workout.exercises[0],
+        currentExercise: {},
         currentID: 0,
       }
 
   }
-  compo
+  componentWillMount() {
+    this.setState({ currentExercise: this.state.workout.exercises[currentID] })
+  }
 
   Next() {
 
@@ -29,7 +31,8 @@ class WorkingoutScreen extends React.Component {
     return (
       <View>
         <ScrollView>
-          <Text style={styles.title}>{this.state.currentExercise.name}</Text>
+          {console.log(this.state.currentExercise)}
+          <Text style={styles.title}>{this.state.currentExercise.z}</Text>
           <Image style={styles.fileImage} source={{ uri: this.state.currentExercise.image }} />
 
           <Button
