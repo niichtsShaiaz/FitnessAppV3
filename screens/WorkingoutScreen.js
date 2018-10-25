@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import { Constants } from 'expo';
+import StopWatch from "./StopWatch";
+//import TestWatch from "./testWatch";
 
 class WorkingoutScreen extends React.Component {
   static navigationOptions = {
@@ -75,6 +77,9 @@ class WorkingoutScreen extends React.Component {
                 onPress={() => { this.nextExercise() }}
               />
             )}
+
+            <StopWatch/>
+            
         </ScrollView>
 
       </View>
