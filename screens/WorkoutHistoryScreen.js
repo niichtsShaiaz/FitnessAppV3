@@ -13,15 +13,14 @@ import { ExpoLinksView } from '@expo/samples';
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = {
-    title: 'My Profile'
+    title: 'Workout History'
     
   };
   constructor(props) {
     super(props);
     this.state =
     {
-        firstname: "",
-        lastname: ""
+        history: []
     }
 }
 
@@ -33,26 +32,18 @@ fetchData = async () => {
     const response = await fetch("https://jbakke.dk/FitnessApp/api/users/" + currentUser.id);
     const json = await response.json();
     this.setState({history: json.workoutHistory})
-    this.setState({firstname: json.firstName})
-    this.setState({lastname: json.lastName})
 }
 
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.headerStyle}>{this.state.firstname + " " + this.state.lastname}</Text>
-
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('History')}>
+        {this.state.history.map(w => (
+                        <TouchableOpacity key={w.id}>
                             <View style={styles.listItem}>
-                                <Text style={styles.logoutText}>{"Workout History"}</Text>
+                                <Text style={styles.name}>{"Date: "+ w.timeEnded+ "\nWorkout: " +w.workoutName}</Text>
                             </View>
                         </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-                            <View style={styles.Logout}>
-                                <Text style={styles.logoutText}>Logout</Text>
-                            </View>
-                        </TouchableOpacity>
+                    ))}
       </ScrollView>
     );
   }
@@ -82,7 +73,7 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor:'#6495ed',
+    backgroundColor:'#EEEEEE',
     borderRadius:20,
     borderWidth: 1,
     borderColor: '#fff'

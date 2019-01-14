@@ -7,7 +7,7 @@ class HomeScreen extends React.Component {
     catagorys: []
   }
   static navigationOptions = {
-    headerTitle: "Home Screen",
+    headerTitle: "Catagorys",
   };
 
   componentDidMount() {
@@ -25,14 +25,27 @@ class HomeScreen extends React.Component {
     return (
       <View>
         <ScrollView>
-          {this.state.catagorys.map((c,i) => (
-            <TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Workout', {catagory: c})}>
-              <View style={styles.listItem}>
-                <Text style={styles.name}>{c.catagory}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
           
+
+
+
+
+            {this.state.catagorys.map((w, i) => (
+                        <TouchableOpacity key={i} onPress={() => this.props.navigation.navigate('Workout', { catagory: w})}>
+                            {i % 2 == 0 ? (
+                                <View style={styles.listItem}>
+                                    <Text style={styles.name}>{w.catagory}</Text>
+                                </View>
+                                
+                            ) : (
+                                    <View style={styles.listItem2}>
+                                        <Text style={styles.name}>{w.catagory}</Text>
+                                    </View>
+                                )}
+
+                        </TouchableOpacity>
+                    ))}
+
         </ScrollView>
       </View>
     );
@@ -41,12 +54,19 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   listItem: {
-      backgroundColor: '#EEEEEE',
-      padding: 12,
-      marginBottom: 1,
-      flexDirection: 'row',
-      alignItems: "center"
-  },
+    backgroundColor: '#EEEEEE',
+    padding: 12,
+    marginBottom: 1,
+    flexDirection: 'row',
+    alignItems: "center"
+},
+listItem2: {
+    backgroundColor: '#dbd6d6',
+    padding: 12,
+    marginBottom: 1,
+    flexDirection: 'row',
+    alignItems: "center"
+},
   fileImage: {
       width: 50,
       height: 50

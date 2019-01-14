@@ -23,41 +23,30 @@ export default class LoginScreen extends React.Component {
 
 
     _tryToLogin = async () =>{
-      const response = await fetch("https://www.jbakke.dk/mini/api/login", {
-			method: 'POST',
+      const response = await fetch("https://jbakke.dk/FitnessApp/api/users/login", {
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-        user: {
-          userName: this.state.username,
+        
+          username: this.state.username,
 				  password: this.state.password,
-        }
+        
 			})
 		})
     const json = await response.json();
-    if(json.error == false)
+    console.log("------------------: " + json.error)
+    if(json.error == undefined)
     {
-      global.currentUser = {username: this.state.username, password: this.state.password}
+      global.currentUser = {id: json.id,username: this.state.username, password: this.state.password}
       this.props.navigation.navigate('Home');
-    }
-    else if(json.status == "invalid password, please try again")
-    {
-      Alert.alert(
-        'Invalid Login',
-        'Wrong password',
-        [
-          {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ],
-        { cancelable: false }
-      )
     }
     else
     {
       Alert.alert(
         'Invalid Login',
-        'Wrong Username',
+        'Wrong Login',
         [
           {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
           {text: 'OK', onPress: () => console.log('OK Pressed')},
@@ -79,7 +68,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.name}>Login</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={this._tryToLogin}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
           <View style={styles.login}>
           <Text style={styles.name}>Register</Text>
           </View>
@@ -102,7 +91,7 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor: '#25dd97',
+    backgroundColor: '#6495ed',
     borderRadius:20,
     borderWidth: 1,
     borderColor: '#fff'

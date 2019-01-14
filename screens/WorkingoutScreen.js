@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import { Constants } from 'expo';
-import StopWatch from "./StopWatch";
 //import TestWatch from "./testWatch";
 
 class WorkingoutScreen extends React.Component {
@@ -55,6 +54,28 @@ class WorkingoutScreen extends React.Component {
       });
     }
   }
+
+  updateWorkoutHistory = async () =>{
+    var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+    const response = await fetch("https://jbakke.dk/FitnessApp/api/users/" + currentUser.id, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      
+        workoutName: this.state.workout.name,
+        timeEnded: dd + '/' + mm + '/' + yyyy,
+      
+    })
+  })
+  
+}
+
+
   render() {
     return (
       <View>
@@ -65,21 +86,27 @@ class WorkingoutScreen extends React.Component {
           <Text style={styles.headerText}>{this.state.workout.exercises[this.state.currentID].description}</Text>
 
           {this.state.isFinished ? (
-            <Button
-              title="Finish!"
-              onPress={() => this.props.navigation.navigate('Home')}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                this.updateWorkoutHistory();
+                this.props.navigation.navigate('Home')}
+              }
+            >
+            <View style={styles.login}>
+          <Text style={styles.name}>Finish</Text>
+          </View>
+          </TouchableOpacity>
 
           ) : (
-              <Button
-                title="Next!"
+            <TouchableOpacity
                 height="70"
                 onPress={() => { this.nextExercise() }}
-              />
+              >
+              <View style={styles.listItem}>
+          <Text style={styles.name}>Next</Text>
+          </View>
+          </TouchableOpacity>
             )}
-
-            <StopWatch/>
-            
         </ScrollView>
 
       </View>
@@ -110,9 +137,37 @@ const styles = StyleSheet.create({
   content: {
   },
   fileImage: {
-    width: 200,
-    height: 200,
+    width: '100%',
+    height: 300,
     alignItems: "center",
-  }
+  },
+  login: {
+    marginTop:10,
+    paddingTop:15,
+    paddingBottom:15,
+    marginLeft:30,
+    marginRight:30,
+    backgroundColor: '#25dd97',
+    borderRadius:20,
+    borderWidth: 1,
+    borderColor: '#fff'
+  },
+  listItem: {
+    marginTop:10,
+    paddingTop:15,
+    paddingBottom:15,
+    marginLeft:30,
+    marginRight:30,
+    backgroundColor: '#6495ed',
+    borderRadius:20,
+    borderWidth: 1,
+    borderColor: '#fff'
+},
+name: {
+  paddingLeft: 12,
+  color: '#666',
+  fontWeight: 'bold',
+  fontSize: 20, textAlign: 'center'
+}
 });
 export default WorkingoutScreen;

@@ -8,6 +8,7 @@ import WorkoutScreen from '../screens/WorkoutScreen';
 import WorkingoutScreen from '../screens/WorkingoutScreen';
 import ProfileScreen from '../screens/ProfileScreen'
 import FavoritesScreen from '../screens/FavoritesScreen'
+import WorkoutHistoryScreen from '../screens/WorkoutHistoryScreen'
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
@@ -20,10 +21,10 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Instant Repair',
+  tabBarLabel: 'Workouts',
   tabBarIcon: ({tintColor}) => (
     <Icon
-        name="wrench"
+        name="child"
         color={tintColor}
         size={24}
     />
@@ -32,6 +33,7 @@ HomeStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
+  History: WorkoutHistoryScreen
 });
 
 ProfileStack.navigationOptions = {
@@ -50,10 +52,10 @@ const FavoritesStack = createStackNavigator({
 });
 
 FavoritesStack.navigationOptions = {
-  tabBarLabel: 'Notifications',
+  tabBarLabel: 'Favorites',
   tabBarIcon: ({tintColor}) => (
     <Icon
-        name="exclamation-circle"
+        name="star"
         color={tintColor}
         size={24}
     />

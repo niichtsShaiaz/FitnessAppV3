@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import AppNavigator from './navigators/AppNavigator';
 
+
+global.currentUser = {id: "",username: "", password: ""}
 export default class App extends React.Component {
 
 

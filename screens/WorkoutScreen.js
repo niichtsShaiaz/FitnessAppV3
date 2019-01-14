@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, ScrollView, Image } from 'react-native';
-
+import Icon from '@expo/vector-icons/FontAwesome';
 
 class WorkoutScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state =
-        {
-            catagory: this.props.navigation.state.params.catagory.catagory,
-            workouts: []
-        }
+            {
+                catagory: this.props.navigation.state.params.catagory.catagory,
+                workouts: []
+            }
     }
-    
-    
+
+
     componentDidMount() {
         this.fetchData();
     }
-    
+
     fetchData = async () => {
         const response = await fetch("https://jbakke.dk/FitnessApp/api/workouts");
         const json = await response.json();
@@ -25,21 +25,31 @@ class WorkoutScreen extends React.Component {
     }
     static navigationOptions = {
         headerTitle: "Workout Screen",
-      };
-    
+    };
+
     render() {
         return (
             <View>
                 <ScrollView>
-                    {this.state.workouts.map(w => (
+                    {this.state.workouts.map((w, i) => (
                         <TouchableOpacity key={w.id} onPress={() => this.props.navigation.navigate('Exercise', { workout: w })}>
-                            <View style={styles.listItem}>
+                            {i % 2 == 0 ? (
+                                <View style={styles.listItem}>
+                                    <Image style={styles.fileImage} source={{
+                                        uri: w.image
+                                    }} />
+                                    <Text style={styles.name}>{w.name}</Text>
+                                </View>
+                                
+                            ) : (
+                                    <View style={styles.listItem2}>
+                                        <Image style={styles.fileImage} source={{
+                                            uri: w.image
+                                        }} />
+                                        <Text style={styles.name}>{w.name}</Text>
+                                    </View>
+                                )}
 
-                                <Image style={styles.fileImage} source={{
-                                    uri: w.image
-                                }} />
-                                <Text style={styles.name}>{w.name}</Text>
-                            </View>
                         </TouchableOpacity>
                     ))}
                 </ScrollView>
@@ -57,6 +67,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: "center"
     },
+    listItem2: {
+        backgroundColor: '#dbd6d6',
+        padding: 12,
+        marginBottom: 1,
+        flexDirection: 'row',
+        alignItems: "center"
+    },
     fileImage: {
         width: 50,
         height: 50
@@ -66,6 +83,13 @@ const styles = StyleSheet.create({
         color: '#666',
         fontWeight: 'bold',
         fontSize: 20
+    }
+    ,
+    firstView :{
+        width: '70%',
+    },
+    secoundView: {
+        width: '30%'
     }
 });
 export default WorkoutScreen;
