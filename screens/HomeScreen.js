@@ -32,6 +32,7 @@ class HomeScreen extends React.Component {
               </View>
             </TouchableOpacity>
           ))}
+          
         </ScrollView>
       </View>
     );
