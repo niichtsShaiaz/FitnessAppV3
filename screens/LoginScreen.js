@@ -60,8 +60,14 @@ export default class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.header}>Fitness Starter</Text>
-      <TextInput style={styles.listItem} value={this.state.username} onChangeText={(username) => this.setState({username})}></TextInput>
+      <View style={styles.logo}>
+      <Text style={styles.header}>Lifter</Text>
+      <Image style={styles.fileImage}
+          source={require('../assets/icon.png')}
+        />
+      </View>
+      
+      <TextInput autoCorrect={false} style={styles.listItem} value={this.state.username} onChangeText={(username) => this.setState({username})}></TextInput>
       <TextInput style={styles.listItem} secureTextEntry={true} value={this.state.password} onChangeText={(password) => this.setState({password})}></TextInput>
         <TouchableOpacity onPress={this._tryToLogin}>
           <View style={styles.login}>
@@ -73,6 +79,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.name}>Register</Text>
           </View>
         </TouchableOpacity>
+        
       </View>
     );
   }
@@ -80,21 +87,31 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    flexDirection: 'row',
+    marginTop: 100,
+    justifyContent: 'center'
+  },
   container: {
     flex: 1,
     paddingTop: 12,
-    backgroundColor: '#fff',
+    backgroundColor: '#464947',
   },
+  fileImage: {
+    width: 50,
+    height: 50,
+    marginLeft: 5
+},
   login: {
     marginTop:10,
     paddingTop:15,
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor: '#6495ed',
+    backgroundColor: '#56BDC9',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#56BDC9'
   },
   listItem: {
     textAlign: 'center',
@@ -103,10 +120,11 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     marginLeft: 30,
     marginRight: 30,
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#E2E4E7',
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#E2E4E7',
+    
 },
 name: {
   paddingLeft: 12,
@@ -118,6 +136,7 @@ header: {
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: "center",
-    marginTop: 100
+    
+    color: "#56BDC9",
 }
 });

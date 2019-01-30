@@ -23,13 +23,10 @@ class WorkoutScreen extends React.Component {
         const json2 = json.filter(item => item.catagory.catagory == this.state.catagory)
         this.setState({ workouts: json2 });
     }
-    static navigationOptions = {
-        headerTitle: "Workout Screen",
-    };
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <ScrollView>
                     {this.state.workouts.map((w, i) => (
                         <TouchableOpacity key={w.id} onPress={() => this.props.navigation.navigate('Exercise', { workout: w })}>
@@ -60,19 +57,25 @@ class WorkoutScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#464947',
+      },
     listItem: {
         backgroundColor: '#EEEEEE',
         padding: 12,
         marginBottom: 1,
         flexDirection: 'row',
-        alignItems: "center"
+        alignItems: "center",
+        height: 80
     },
     listItem2: {
         backgroundColor: '#dbd6d6',
         padding: 12,
         marginBottom: 1,
         flexDirection: 'row',
-        alignItems: "center"
+        alignItems: "center",
+        height: 80
     },
     fileImage: {
         width: 50,

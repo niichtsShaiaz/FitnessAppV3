@@ -62,13 +62,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#464947',
   },
   headerStyle: {
     textAlign: 'center',
     fontSize: 36,
     fontWeight: '100',
-    marginBottom: 24
+    marginBottom: 24,
+    color: "#E2E4E7"
   },
   headerStyle2: {
     textAlign: 'center',
@@ -82,10 +83,10 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor:'#6495ed',
+    backgroundColor:'#56BDC9',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#56BDC9'
   },
   Logout: {
     marginTop:10,
@@ -96,8 +97,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#f44259',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff',
-    marginBottom: 100
+    borderColor: '#f44259',
+    marginBottom: 100,
   },
   fileImage: {
     alignSelf: 'center',
@@ -108,13 +109,13 @@ const styles = StyleSheet.create({
   },
   name: {
     paddingLeft: 12,
-    color: '#666',
+    color: '#E2E4E7',
     fontWeight: 'bold',
     fontSize: 20
   },
   logoutText: {
     paddingLeft: 12,
-    color: '#666',
+    color: '#464947',
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: "center"

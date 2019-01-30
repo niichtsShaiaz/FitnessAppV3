@@ -55,6 +55,22 @@ class WorkingoutScreen extends React.Component {
     }
   }
 
+  back() {
+    if(this.state.isFinished)
+    {
+      this.setState((state) => {
+        return { isFinished: false }
+      });
+    }
+    if (this.state.currentID == 0) {
+    }
+    else {
+      this.setState((state) => {
+        return { currentID: state.currentID - 1 }
+      });
+    }
+  }
+
   updateWorkoutHistory = async () =>{
     var today = new Date();
   var dd = today.getDate();
@@ -78,7 +94,7 @@ class WorkingoutScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ScrollView>
           <Text style={styles.title}>{this.state.currentID+1} / {this.state.workout.exercises.length}</Text>
           <Text style={styles.title}>{this.state.workout.exercises[this.state.currentID].name}</Text>
@@ -107,6 +123,17 @@ class WorkingoutScreen extends React.Component {
           </View>
           </TouchableOpacity>
             )}
+
+            
+            <TouchableOpacity
+                height="70"
+                onPress={() => { this.back() }}
+              >
+              <View style={styles.listItem}>
+          <Text style={styles.name}>Back</Text>
+          </View>
+          </TouchableOpacity>
+
         </ScrollView>
 
       </View>
@@ -116,11 +143,17 @@ class WorkingoutScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#464947',
+  },
   title: {
     textAlign: 'center',
     fontSize: 22,
     fontWeight: '300',
     marginBottom: 20,
+    color: "#E2E4E7",
+    fontWeight: 'bold'
   },
   header: {
     backgroundColor: '#EEEEEE',
@@ -133,6 +166,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '500',
+    color: "#E2E4E7"
   },
   content: {
   },
@@ -147,10 +181,10 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor: '#25dd97',
+    backgroundColor: '#72C64B',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#72C64B'
   },
   listItem: {
     marginTop:10,
@@ -158,10 +192,10 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor: '#6495ed',
+    backgroundColor: '#56BDC9',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#56BDC9'
 },
 name: {
   paddingLeft: 12,

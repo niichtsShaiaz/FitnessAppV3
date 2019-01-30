@@ -7,7 +7,7 @@ class HomeScreen extends React.Component {
     catagorys: []
   }
   static navigationOptions = {
-    headerTitle: "Catagorys",
+    headerTitle: "Categories"
   };
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ScrollView>
           
 
@@ -53,19 +53,25 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#464947',
+  },
   listItem: {
     backgroundColor: '#EEEEEE',
     padding: 12,
     marginBottom: 1,
     flexDirection: 'row',
-    alignItems: "center"
+    alignItems: "center",
+    height: 80
 },
 listItem2: {
     backgroundColor: '#dbd6d6',
     padding: 12,
     marginBottom: 1,
     flexDirection: 'row',
-    alignItems: "center"
+    alignItems: "center",
+    height: 80
 },
   fileImage: {
       width: 50,

@@ -18,6 +18,16 @@ const HomeStack = createStackNavigator({
 },
 {
   initialRouteName: 'Home',
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor:"#56BDC9"
+    }
+    ,
+    headerTitleStyle: {
+      fontWeight: "bold",
+      color: "#E2E4E7",
+    }
+  }
 });
 
 HomeStack.navigationOptions = {
@@ -34,6 +44,17 @@ HomeStack.navigationOptions = {
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
   History: WorkoutHistoryScreen
+},{
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor:"#56BDC9"
+    }
+    ,
+    headerTitleStyle: {
+      fontWeight: "bold",
+      color: "#E2E4E7",
+    }
+  }
 });
 
 ProfileStack.navigationOptions = {
@@ -49,6 +70,17 @@ ProfileStack.navigationOptions = {
 
 const FavoritesStack = createStackNavigator({
   Favorites: FavoritesScreen,
+},{
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor:"#56BDC9"
+    }
+    ,
+    headerTitleStyle: {
+      fontWeight: "bold",
+      color: "#E2E4E7",
+    }
+  }
 });
 
 FavoritesStack.navigationOptions = {
@@ -66,4 +98,18 @@ export default createBottomTabNavigator({
   HomeStack,
   ProfileStack,
   FavoritesStack,
-});
+},{
+  tabBarOptions: {
+    activeTintColor: '#464947',
+    inactiveTintColor: "#E2E4E7"
+    ,
+    labelStyle: {
+      fontSize: 14,
+      fontWeight: "bold"
+    },
+    style: {
+      backgroundColor: '#56BDC9',
+    },
+  }
+}
+);

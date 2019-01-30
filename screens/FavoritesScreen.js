@@ -35,7 +35,7 @@ fetchData = async () => {
  
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <TouchableOpacity onPress={()=> this.fetchData()
         }>
           <View style={styles.refresh}>
@@ -69,6 +69,9 @@ fetchData = async () => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#464947',
+      },
   refreshText: {
     paddingLeft: 12,
     color: '#666',
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 20, textAlign: 'center'
   }, 
   refresh: {
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#72C64B',
     padding: 12,
     marginBottom: 1,
     flexDirection: 'row',
@@ -87,14 +90,16 @@ const styles = StyleSheet.create({
       padding: 12,
       marginBottom: 1,
       flexDirection: 'row',
-      alignItems: "center"
+      alignItems: "center",
+      height: 80
   },
   listItem2: {
       backgroundColor: '#dbd6d6',
       padding: 12,
       marginBottom: 1,
       flexDirection: 'row',
-      alignItems: "center"
+      alignItems: "center",
+      height: 80
   },
   fileImage: {
       width: 50,

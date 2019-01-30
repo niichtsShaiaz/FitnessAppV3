@@ -37,7 +37,7 @@ class ExerciseScreen extends React.Component {
   _renderContent = section => {
     return (
       <View style={styles.content}>
-        <Text style={styles.headerText}>{section.description}</Text>
+        <Text style={styles.deText}>{section.description}</Text>
         
       </View>
     );
@@ -83,7 +83,7 @@ class ExerciseScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <ScrollView>
           <Text style={styles.title}>{this.state.workout.name}</Text>
           <Accordion
@@ -119,14 +119,20 @@ class ExerciseScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#464947',
+  },
   title: {
     textAlign: 'center',
     fontSize: 22,
     fontWeight: '300',
     marginBottom: 20,
+    color : "#E2E4E7",
+    fontWeight: "bold"
   },
   header: {
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#E2E4E7',
         padding: 12,
         marginBottom: 1,
         flexDirection: 'row',
@@ -136,6 +142,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '500',
+    color: "#464947"
+  },
+  deText: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500',
+    color: "#E2E4E7"
   },
   content: {
   },
@@ -149,10 +162,10 @@ login: {
   paddingBottom:15,
   marginLeft:30,
   marginRight:30,
-  backgroundColor: '#25dd97',
+  backgroundColor: '#72C64B',
   borderRadius:20,
   borderWidth: 1,
-  borderColor: '#fff'
+  borderColor: '#72C64B'
 },
 listItem: {
   marginTop:10,
@@ -160,10 +173,10 @@ listItem: {
   paddingBottom:15,
   marginLeft:30,
   marginRight:30,
-  backgroundColor: '#6495ed',
+  backgroundColor: '#56BDC9',
   borderRadius:20,
   borderWidth: 1,
-  borderColor: '#fff'
+  borderColor: '#56BDC9'
 },
 name: {
 paddingLeft: 12,

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#464947',
   },
   headerStyle: {
     textAlign: 'center',
@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
     paddingBottom:15,
     marginLeft:30,
     marginRight:30,
-    backgroundColor:'#EEEEEE',
+    backgroundColor:'#E2E4E7',
     borderRadius:20,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#E2E4E7'
   },
   Logout: {
     marginTop:10,
